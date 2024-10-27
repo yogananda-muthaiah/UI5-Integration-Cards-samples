@@ -1,0 +1,71 @@
+{
+	"_version": "1.14.0",
+	"sap.app": {
+		"id": "card.explorer.data.list.card",
+		"type": "card",
+		"title": "Sample for Client-Side Pagination in Cards",
+		"subTitle": "Sample for Client-Side Pagination in Cards",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+        "sap.ui5": {
+            "rootView": {
+                "viewName": "sap.ui.integration.sample.Destinations.Destinations",
+                "type": "json",
+                "async": true
+            },
+            "dependencies": {
+                "libs": {
+                    "sap.f": {},
+                    "sap.ui.core": {},
+                    "sap.ui.integration": {}
+                }
+            },
+            "config": {
+            }
+        },        
+		"shortTitle": "A short title for this Card",
+		"info": "Additional information about this Card",
+		"description": "A long description for this Card",
+		"tags": {
+			"keywords": [
+				"Data",
+				"Pagination",
+				"Card",
+				"Sample"
+			]
+		}
+	},
+	"sap.card": {
+		"type": "List",
+		"data": {
+			"request": {
+				"url": "https://services.odata.org/V4/Northwind/Northwind.svc/Products",
+				"parameters": {
+					"$format": "json",
+					"$top": 5,
+					"$count": true
+				}
+			},
+			"path": "/value/"
+		},
+		"header": {
+			"title": "Products",
+			"subTitle": "In Stock Information",
+			"icon": {
+				"src": "sap-icon://product"
+			},
+			"status": {
+				"text": "{= format.text(${i18n>CARD.COUNT_X_OF_Y}, [${parameters>/visibleItems}, ${/@odata.count}]) }"
+			}
+		},
+		"content": {
+			"item": {
+				"title": "{ProductName}",
+                "description": "{UnitsInStock} units in stock",
+				"description1": "UnitPrice {= format.currency(${UnitPrice}, 'EUR')}",                
+				"highlight": "{= ${Discontinued} ? 'Error' : 'Success'}"
+			}
+		}
+	}
+}

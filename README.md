@@ -9,4 +9,4 @@ All the samples in one page with manifests
 * [Explore](https://ui5.sap.com/test-resources/sap/ui/integration/demokit/cardExplorer/webapp/index.html#/overview/introduction)
 
 
-[] Provide Feedback for Improvement
+[X] Provide Feedback for Improvement
